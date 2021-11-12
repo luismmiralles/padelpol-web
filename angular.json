@@ -51,7 +51,9 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles/override-angular-material.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles/override-bootstrap.scss",
               "src/styles.scss"
             ],
             "scripts": []
