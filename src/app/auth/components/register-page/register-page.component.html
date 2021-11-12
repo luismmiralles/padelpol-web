@@ -4,14 +4,14 @@
             <div class="col-11 col-md-8 col-lg-6 text-center">
                 <img src='assets/images/logo-blanco.png' class="mb-4" width="85%" alt='Logo'>
                 <div class="bg-white rounded border-primary shadow">
-                    <form class="row p-5">
+                    <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()" class="row p-5">
                         <div class="col-12">
                             <h1 class="mat-display-1 text-primary mb-4">Regístrate</h1>
                         </div>
                         <div class="col-12">
                             <mat-form-field class="w-100" appearance="legacy">
                                 <mat-label>Nombre</mat-label>
-                                <input matInput placeholder="Nombre">
+                                <input formControlName="name" matInput placeholder="Nombre">
                                 <mat-icon matPrefix class="me-3 align-text-bottom">person</mat-icon>
                             </mat-form-field>
                         </div>
@@ -19,9 +19,11 @@
                             <mat-form-field class="w-100" appearance="legacy">
                                 <mat-label>Nivel de padel</mat-label>
                                 <mat-icon matPrefix class="me-3 align-text-bottom">sports_tennis</mat-icon>
-                                <input matInput placeholder="Nivel" [matAutocomplete]="auto">
+                                <input formControlName="paddleLevel" matInput placeholder="Nivel"
+                                    [matAutocomplete]="auto">
                                 <mat-autocomplete #auto="matAutocomplete">
-                                    <mat-option *ngFor="let option of ['Principiante', 'Intermedio', 'Avanzado']" [value]="option">
+                                    <mat-option *ngFor="let option of ['Principiante', 'Intermedio', 'Avanzado']"
+                                        [value]="option">
                                         {{ option }}
                                     </mat-option>
                                 </mat-autocomplete>
@@ -30,26 +32,26 @@
                         <div class="col-12">
                             <mat-form-field class="w-100" appearance="legacy">
                                 <mat-label>Email</mat-label>
-                                <input matInput placeholder="Email">
+                                <input formControlName="email" matInput placeholder="Email">
                                 <mat-icon matPrefix class="me-3 align-text-bottom">email</mat-icon>
                             </mat-form-field>
                         </div>
                         <div class="col-12">
                             <mat-form-field class="w-100" appearance="legacy">
                                 <mat-label>Contraseña</mat-label>
-                                <input matInput placeholder="Contraseña">
+                                <input formControlName="password" matInput placeholder="Contraseña">
                                 <mat-icon matPrefix class="me-3 align-text-bottom">lock</mat-icon>
                             </mat-form-field>
                         </div>
                         <div class="col-12 mb-3">
                             <mat-form-field class="w-100" appearance="legacy">
                                 <mat-label>Repetir contraseña</mat-label>
-                                <input matInput placeholder="Repetir contraseña">
+                                <input formControlName="passwordConfirmation" matInput placeholder="Repetir contraseña">
                                 <mat-icon matPrefix class="me-3 align-text-bottom">lock</mat-icon>
                             </mat-form-field>
                         </div>
                         <div class="col-12 mb-3">
-                            <button routerLink="/partidos" mat-raised-button color="primary" class="w-100">Crear
+                            <button type="submit" mat-raised-button color="primary" class="w-100">Crear
                                 cuenta</button>
                         </div>
                         <div class="col-12">
@@ -59,6 +61,7 @@
                             <i>¿Ya tienes cuenta? <a routerLink="/login">¡Inicia sesión!</a></i>
                         </div>
                     </form>
+                    <pre>{{registerForm.value | json}}</pre>
                 </div>
             </div>
         </div>
