@@ -21,10 +21,10 @@
                                 <mat-icon matPrefix class="me-3 align-text-bottom">sports_tennis</mat-icon>
                                 <input formControlName="paddleLevel" matInput placeholder="Nivel"
                                     [matAutocomplete]="auto" required>
-                                <mat-autocomplete #auto="matAutocomplete">
-                                    <mat-option *ngFor="let option of ['Principiante', 'Intermedio', 'Avanzado']"
-                                        [value]="option">
-                                        {{ option }}
+                                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                                    <mat-option *ngFor="let pl of filteredPaddleLevels | async"
+                                        [value]="pl">
+                                        {{ pl.name }}
                                     </mat-option>
                                 </mat-autocomplete>
                             </mat-form-field>
