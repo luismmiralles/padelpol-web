@@ -9,11 +9,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class RegisterPageComponent implements OnInit {
 
   registerForm = this.fb.group({
-    name: ['', Validators.required],
-    paddleLevel: ['', Validators.required],
-    email: ['', Validators.required],
-    password: ['', Validators.required],
-    passwordConfirmation: ['', Validators.required],
+    name: [''],
+    paddleLevel: [''],
+    email: [''],
+    password: [''],
+    passwordConfirmation: [''],
   });
 
   constructor(private fb: FormBuilder) { }
