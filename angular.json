@@ -54,6 +54,7 @@
               "src/styles/override-angular-material.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles/override-bootstrap.scss",
+              "node_modules/sweetalert2/dist/sweetalert2.min.css",
               "src/styles.scss"
             ],
             "scripts": []

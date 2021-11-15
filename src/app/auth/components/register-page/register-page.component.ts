@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { map, Observable } from 'rxjs';
+import { SweetalertService } from 'src/app/core/services/sweetalert.service';
 import { PaddleLevelApiResponse } from '../../interfaces/paddle-level-api-response';
 import { AuthApiService } from '../../services/auth-api.service';
 
@@ -22,7 +23,7 @@ export class RegisterPageComponent implements OnInit {
   public paddleLevels: PaddleLevelApiResponse[] = [];
   filteredPaddleLevels!: Observable<PaddleLevelApiResponse[]>;
 
-  constructor(private fb: FormBuilder, private authApiService: AuthApiService) { }
+  constructor(private fb: FormBuilder, private authApiService: AuthApiService, private sweetalertService: SweetalertService) { }
 
   ngOnInit(): void {
     this.authApiService.getPaddleLevels().subscribe(res => {
@@ -47,8 +48,14 @@ export class RegisterPageComponent implements OnInit {
     return this.paddleLevels.filter(pl => pl.name.toLowerCase().includes(value.toLowerCase()));
   }
   
-  onRegisterSubmit(){
-    console.log("Register form submitted ", this.registerForm.value);    
+  onRegisterSubmit(): any{
+    const params = this.registerForm.value;
+    // if(!params.paddleLevel.id) return console.log("Nivel de paddle obligatorio"); OTRA FORMA
+    if(typeof params.paddleLevel == 'string') return this.sweetalertService.warning("Selecciona el nivel de paddle");
+    if(params.password != params.passwordConfirmation) return this.sweetalertService.warning("Las contraseñas han de ser iguales");
+    
+    console.log("Register form submitted")
+    return this.sweetalertService.success("Enviado correctamente");    
   }
 
 }
