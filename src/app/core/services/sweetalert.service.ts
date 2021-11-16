@@ -36,7 +36,8 @@ export class SweetalertService {
     const messages = Object.values(response.error || {}).reduce((sol, element) => {
       sol = sol.concat(element);
       return sol;
-    }, []); //sol es un acumulador y 
+    }, []); //response.error llega como json key-value y lo que hace es coger los arrays de values y convertirlo en
+    // array de strings. sol es un acumulador y 
     //para la primera iteracion sol es un array vacio [], luego sol almacena cada element ya que lo devuelve en el return
 
     if(messages.lenght == 0) messages.push("Error inesperado");

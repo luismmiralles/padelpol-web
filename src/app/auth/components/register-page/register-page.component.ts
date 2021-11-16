@@ -20,7 +20,7 @@ export class RegisterPageComponent implements OnInit {
     passwordConfirmation: [''],
   });
 
-  public paddleLevels: PaddleLevelApiResponse[] = [];
+  public paddleLevels: PaddleLevelApiResponse[];
   filteredPaddleLevels!: Observable<PaddleLevelApiResponse[]>;
 
   constructor(private fb: FormBuilder, private authApiService: AuthApiService, private sweetalertService: SweetalertService) { }
@@ -51,8 +51,8 @@ export class RegisterPageComponent implements OnInit {
   onRegisterSubmit(): any {
     const params = this.registerForm.value;
     // if(!params.paddleLevel.id) return console.log("Nivel de paddle obligatorio"); OTRA FORMA
-    // if (typeof params.paddleLevel == 'string') return this.sweetalertService.warning("Selecciona el nivel de paddle");
-    // if (params.password != params.passwordConfirmation) return this.sweetalertService.warning("Las contraseñas han de ser iguales");
+    if (typeof params.paddleLevel == 'string') return this.sweetalertService.warning("Selecciona el nivel de paddle");
+    if (params.password != params.passwordConfirmation) return this.sweetalertService.warning("Las contraseñas han de ser iguales");
 
     this.authApiService.register({
       name: params.name,
