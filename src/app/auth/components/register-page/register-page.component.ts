@@ -21,7 +21,7 @@ export class RegisterPageComponent implements OnInit {
     password: [''],
     passwordConfirmation: [''],
   });
-  
+
   loginPagePath = `/${appRoutes.authModule}/${authRoutes.loginPage}`;
 
   public paddleLevels: PaddleLevelApiResponse[];
