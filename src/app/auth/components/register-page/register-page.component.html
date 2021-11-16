@@ -58,7 +58,7 @@
                             <hr class="d-inline-block bg-primary w-75">
                         </div>
                         <div class="col-12">
-                            <i>¿Ya tienes cuenta? <a routerLink="/login">¡Inicia sesión!</a></i>
+                            <i>¿Ya tienes cuenta? <a [routerLink]="loginPagePath">¡Inicia sesión!</a></i>
                         </div>
                     </form>
                     <pre>{{registerForm.value | json}}</pre>
