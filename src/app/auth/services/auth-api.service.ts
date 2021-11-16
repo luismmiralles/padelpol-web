@@ -19,4 +19,8 @@ export class AuthApiService {
   register(params: RegisterApiRequest): Observable<RegisterApiRsponse>{
     return this.http.post<RegisterApiRsponse>("http://padelpol.herokuapp.com/api/auth/register", params);
   }
+
+  login(params: any): Observable<any>{
+    return this.http.post<any>("http://padelpol.herokuapp.com/api/auth/login", params);
+  }
 }
