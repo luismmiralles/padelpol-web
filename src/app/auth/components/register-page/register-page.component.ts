@@ -30,10 +30,10 @@ export class RegisterPageComponent implements OnInit {
       this.paddleLevels = res;
       this.registerForm.controls['paddleLevel'].setValue(''); //mete un valor vacío y activa el valueChanges y así se cargan los valores
     });
-    
+
     this.filteredPaddleLevels = this.registerForm.controls['paddleLevel'].valueChanges.pipe(
       map((value: string | PaddleLevelApiResponse) => {
-        if(typeof value != "string") value = value.name;
+        if (typeof value != "string") value = value.name;
         return this._filter(value);
       }),
     );
@@ -47,15 +47,30 @@ export class RegisterPageComponent implements OnInit {
   private _filter(value: string): PaddleLevelApiResponse[] {
     return this.paddleLevels.filter(pl => pl.name.toLowerCase().includes(value.toLowerCase()));
   }
-  
-  onRegisterSubmit(): any{
+
+  onRegisterSubmit(): any {
     const params = this.registerForm.value;
     // if(!params.paddleLevel.id) return console.log("Nivel de paddle obligatorio"); OTRA FORMA
-    if(typeof params.paddleLevel == 'string') return this.sweetalertService.warning("Selecciona el nivel de paddle");
-    if(params.password != params.passwordConfirmation) return this.sweetalertService.warning("Las contraseñas han de ser iguales");
-    
-    console.log("Register form submitted")
-    return this.sweetalertService.success("Enviado correctamente");    
+    // if (typeof params.paddleLevel == 'string') return this.sweetalertService.warning("Selecciona el nivel de paddle");
+    // if (params.password != params.passwordConfirmation) return this.sweetalertService.warning("Las contraseñas han de ser iguales");
+
+    this.authApiService.register({
+      name: params.name,
+      password: params.password,
+      password_confirmation: params.passwordConfirmation,
+      paddle_level_id: params.paddleLevel.id,
+      email: params.email
+    }).subscribe({
+      next: res => this.sweetalertService.success("Usuario creado correctamente", "Empieza lo bueno"),
+      // error: err => this.sweetalertService.error("Ya existe un usuario con este email")
+      error: errorResponse => this.sweetalertService.showAPIErrors(errorResponse)
+    })
+
+    // .subscribe(res => {
+    //   this.sweetalertService.success("Usuario creado correctamente", "Empieza lo bueno");
+    // }, err =>{
+    //   this.sweetalertService.error("Ya existe un usuario con este email");
+    // });
   }
 
 }

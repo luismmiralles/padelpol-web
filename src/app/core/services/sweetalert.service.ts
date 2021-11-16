@@ -31,4 +31,16 @@ export class SweetalertService {
       text: subtitle
     })
   }
+ 
+  showAPIErrors(response: { error?: object }) {
+    const messages = Object.values(response.error || {}).reduce((sol, element) => {
+      sol = sol.concat(element);
+      return sol;
+    }, []); //sol es un acumulador y 
+    //para la primera iteracion sol es un array vacio [], luego sol almacena cada element ya que lo devuelve en el return
+
+    if(messages.lenght == 0) messages.push("Error inesperado");
+    return this.error(messages.join("\n"));
+    
+  }
 }
