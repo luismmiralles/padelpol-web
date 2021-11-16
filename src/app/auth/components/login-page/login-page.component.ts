@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { SessionStorageService } from 'src/app/core/services/session-storage.service';
 import { SweetalertService } from 'src/app/core/services/sweetalert.service';
 import { AuthApiService } from '../../services/auth-api.service';
 
@@ -15,7 +16,7 @@ export class LoginPageComponent implements OnInit {
     password: ['']
   });
 
-  constructor(private fb: FormBuilder, private authApiService: AuthApiService, private sweetalertService: SweetalertService) { }
+  constructor(private fb: FormBuilder, private authApiService: AuthApiService, private sweetalertService: SweetalertService, private sessionStorageService: SessionStorageService) { }
 
   ngOnInit(): void {
   }
@@ -23,25 +24,17 @@ export class LoginPageComponent implements OnInit {
 
   onLoginSubmit(): any {
     const params = this.registerLogin.value;
-    // if(!params.paddleLevel.id) return console.log("Nivel de paddle obligatorio"); OTRA FORMA
 
-    this.authApiService.register({
-      name: params.name,
+    this.authApiService.login({
       password: params.password,
-      password_confirmation: params.passwordConfirmation,
-      paddle_level_id: params.paddleLevel.id,
       email: params.email
     }).subscribe({
-      next: res => this.sweetalertService.success("Usuario creado correctamente", "Empieza lo bueno"),
-      // error: err => this.sweetalertService.error("Ya existe un usuario con este email")
+      next: res => {
+        this.sweetalertService.success("Usuario logeado correctamente", "Disfruta!!"),
+          this.sessionStorageService.setItem("token", res.access_token)
+      },
       error: errorResponse => this.sweetalertService.showAPIErrors(errorResponse)
     })
-
-    // .subscribe(res => {
-    //   this.sweetalertService.success("Usuario creado correctamente", "Empieza lo bueno");
-    // }, err =>{
-    //   this.sweetalertService.error("Ya existe un usuario con este email");
-    // });
   }
 
 }
