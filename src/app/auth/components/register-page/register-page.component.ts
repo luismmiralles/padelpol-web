@@ -6,6 +6,7 @@ import { SweetalertService } from 'src/app/core/services/sweetalert.service';
 import { authRoutes } from '../../auth-routes';
 import { PaddleLevelApiResponse } from '../../../core/models/interfaces/paddle-level-api-response';
 import { AuthApiService } from '../../services/auth-api.service';
+import { PadelpolApiService } from 'src/app/core/services/padelpol-api.service';
 
 @Component({
   selector: 'app-register-page',
@@ -27,10 +28,11 @@ export class RegisterPageComponent implements OnInit {
   public paddleLevels: PaddleLevelApiResponse[];
   filteredPaddleLevels!: Observable<PaddleLevelApiResponse[]>;
 
-  constructor(private fb: FormBuilder, private authApiService: AuthApiService, private sweetalertService: SweetalertService) { }
+  constructor(private fb: FormBuilder, private authApiService: AuthApiService,
+    private sweetalertService: SweetalertService, private padelpolApiService: PadelpolApiService) { }
 
   ngOnInit(): void {
-    this.authApiService.getPaddleLevels().subscribe(res => {
+    this.padelpolApiService.getPaddleLevels().subscribe(res => {
       this.paddleLevels = res;
       this.registerForm.controls['paddleLevel'].setValue(''); //mete un valor vacío y activa el valueChanges y así se cargan los valores
     });
