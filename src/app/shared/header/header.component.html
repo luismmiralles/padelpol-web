@@ -1,0 +1,71 @@
+<!-- Header -->
+<nav class="navbar bg-primary bg-gradient py-0">
+    <div class="container-fluid px-0 justify-content-center justify-content-sm-between" style="height: 65px;">
+        <a class="d-none d-xl-inline-block"><img src='assets/images/logo-ministerio-interior.jpg' height="100%"
+                alt='Ministerio del Interior'></a>
+        <a class="h-100 mx-3"><img src='assets/images/logo-blanco.png' height="100%" alt='Logo'></a>
+        <a class="d-none d-sm-inline-block"><img src='assets/images/escudo-cnp.png' height="100%"
+                alt='Cuerpo Nacional de la Policía'></a>
+    </div>
+</nav>
+
+<!-- Subheader -->
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+        <!-- Toogle button  -->
+        <button class="navbar-toggler mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#headerNavbar"
+            aria-controls="headerNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Menu items -->
+        <div class="collapse navbar-collapse" id="headerNavbar">
+            <ul class="navbar-nav me-auto mb-0">
+                <li class="nav-item">
+                    <a routerLink="/partidos" class="nav-link pointer pr-3"
+                        [ngClass]="{'active': (router.url.includes('partidos'))}" data-bs-toggle="collapse"
+                        data-bs-target="#headerNavbar.show">
+                        Partidos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link pointer pr-3" [ngClass]="{'active': false}" data-bs-toggle="collapse"
+                        data-bs-target="#headerNavbar.show">
+                        Liga
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/jugadores" class="nav-link pointer pr-3"
+                        [ngClass]="{'active': (router.url.includes('jugadores'))}" data-bs-toggle="collapse"
+                        data-bs-target="#headerNavbar.show">
+                        Jugadores
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- User info -->
+        <div class="d-flex text-white position-absolute top-0 end-0 mt-2 me-2">
+            <button mat-button class="px-0" [matMenuTriggerFor]="menu">
+                <mat-icon>person</mat-icon>
+                <span class="ms-1">Oliver</span>
+                <mat-icon>expand_more</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="openShowUserDialog()">
+                    <mat-icon>account_circle</mat-icon>
+                    <span>Mi perfil</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>https</mat-icon>
+                    <span>Nivel: 6</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>sports_tennis</mat-icon>
+                    <span>Mis partidos</span>
+                </button>
+            </mat-menu>
+            <button mat-icon-button class="text-danger" routerLink="/login">
+                <mat-icon>power_settings_new</mat-icon>
+            </button>
+        </div>
+    </div>
+</nav>
