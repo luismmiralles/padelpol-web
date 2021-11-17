@@ -17,16 +17,21 @@ export class LoadingService {
     // 'background-position: center;',
   ]
 
+  private count = 0;
+
   constructor() {
     this.loadingDiv = document.createElement("div");
     this.loadingDiv.setAttribute('style', this.styles.join(''));
     document.body.appendChild(this.loadingDiv);
   }
-
+  // el count es para que cuando haga varias peticiones HTTP no esté haciendo star-stop todo el rato y 
+  // hacerlo solo al principio y al final
   start() {
-    this.loadingDiv.style.display = 'block';
+    this.count++;
+    if (this.count == 1) this.loadingDiv.style.display = 'block';
   }
   stop() {
-    this.loadingDiv.style.display = 'none';
+    if (this.count > 0) this.count--;
+    if (this.count == 0) this.loadingDiv.style.display = 'none';
   }
 }
