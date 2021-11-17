@@ -4,7 +4,7 @@ import { map, Observable } from 'rxjs';
 import { appRoutes } from 'src/app/app-routes';
 import { SweetalertService } from 'src/app/core/services/sweetalert.service';
 import { authRoutes } from '../../auth-routes';
-import { PaddleLevelApiResponse } from '../../interfaces/paddle-level-api-response';
+import { PaddleLevelApiResponse } from '../../../core/models/interfaces/paddle-level-api-response';
 import { AuthApiService } from '../../services/auth-api.service';
 
 @Component({

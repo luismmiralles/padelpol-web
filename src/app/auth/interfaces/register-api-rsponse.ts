@@ -1,4 +1,4 @@
-import { PaddleLevelApiResponse } from "./paddle-level-api-response";
+import { PaddleLevelApiResponse } from "../../core/models/interfaces/paddle-level-api-response";
 
 export interface RegisterApiRsponse {
     id: number,

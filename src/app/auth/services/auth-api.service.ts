@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginApiRequest } from '../interfaces/login-api-request';
 import { LoginApiResponse } from '../interfaces/login-api-response';
-import { PaddleLevelApiResponse } from '../interfaces/paddle-level-api-response';
+import { PaddleLevelApiResponse } from '../../core/models/interfaces/paddle-level-api-response';
 import { RegisterApiRequest } from '../interfaces/register-api-request';
 import { RegisterApiRsponse } from '../interfaces/register-api-rsponse';
 
