@@ -22,7 +22,9 @@
       "es2020",
       "dom"
     ],
-    "strictPropertyInitialization": false //CUSTOM LINE
+    "strictPropertyInitialization": false, //CUSTOM LINE
+    "resolveJsonModule": true, //CUSTOM LINE
+    "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
