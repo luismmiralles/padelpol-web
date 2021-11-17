@@ -43,10 +43,10 @@
             </ul>
         </div>
         <!-- User info -->
-        <div class="d-flex text-white position-absolute top-0 end-0 mt-2 me-2">
+        <div *ngIf="user" class="d-flex text-white position-absolute top-0 end-0 mt-2 me-2">
             <button mat-button class="px-0" [matMenuTriggerFor]="menu">
                 <mat-icon>person</mat-icon>
-                <span class="ms-1">Oliver</span>
+                <span class="ms-1">{{user.name}}</span>
                 <mat-icon>expand_more</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
@@ -56,14 +56,18 @@
                 </button>
                 <button mat-menu-item>
                     <mat-icon>https</mat-icon>
-                    <span>Nivel: 6</span>
+                    <span>Nivel: {{user.rol}}</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>https</mat-icon>
+                    <span>Nivel de padel: {{user.paddle_level.name}}</span>
                 </button>
                 <button mat-menu-item>
                     <mat-icon>sports_tennis</mat-icon>
                     <span>Mis partidos</span>
                 </button>
             </mat-menu>
-            <button mat-icon-button class="text-danger" routerLink="/login">
+            <button mat-icon-button class="text-danger" (click)="logOut()">
                 <mat-icon>power_settings_new</mat-icon>
             </button>
         </div>
