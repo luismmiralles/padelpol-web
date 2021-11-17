@@ -1,3 +1,5 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<div class="position-relative min-vh-100">
+    <app-header *ngIf="!router.url.includes(authModulePath)"></app-header><!-- si la ruta de arriba contiene auth no lo printa -->
+    <router-outlet></router-outlet>
+    <app-footer *ngIf="!router.url.includes(authModulePath)"></app-footer>
+</div>

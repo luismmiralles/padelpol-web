@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { appRoutes } from './app-routes';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'padelpol-web';
+
+  authModulePath = appRoutes.authModule;
+
+  constructor(public router: Router) { }
 }
