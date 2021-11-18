@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { config } from 'src/app/core/config';
-import { SessionStorageService } from 'src/app/core/services/session-storage.service';
 import { GameApiResponse } from '../models/interfaces/game-api-response';
 import { Game } from '../models/game';
 
@@ -11,12 +10,10 @@ import { Game } from '../models/game';
 })
 export class GamesApiService {
 
-  constructor(private http: HttpClient, private sessionStorageService: SessionStorageService) { }
+  constructor(private http: HttpClient) { }
 
   getGames(): Observable<Game[]> {
-    return this.http.get<GameApiResponse[]>(`${config.apiUrl}/games`, {
-      headers: { Authorization: `Bearer ${this.sessionStorageService.getItem("token")}` }
-    }).pipe(
+    return this.http.get<GameApiResponse[]>(`${config.apiUrl}/games`).pipe(
       map((res: GameApiResponse[]) => {
         return res.map((g: GameApiResponse) => {
           return new Game(<Game>Object.assign(g, {
