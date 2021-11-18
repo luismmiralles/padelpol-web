@@ -4,11 +4,13 @@
             <h1 class="mb-0">
                 <span class="material-icons fs-3 align-middle">location_on</span>
                 <span class="me-3">{{ game.location }}</span>
-                <span *ngIf="authService.getCurrentUser()?.can('UPDATE_GAME')"
+                <span
+                    *ngIf="authService.getCurrentUser()?.can('UPDATE_GAME') || authService.getCurrentUser()?.id == game.player1.id"
                     (click)="openCreateGameDialog();$event.stopPropagation();"
                     class="material-icons fs-5 me-2 text-muted pointer">edit</span>
-                <span *ngIf="authService.getCurrentUser()?.can('DELETE_GAME')" (click)="$event.stopPropagation();"
-                    class="material-icons fs-5 text-danger pointer">delete</span>
+                <span
+                    *ngIf="authService.getCurrentUser()?.can('DELETE_GAME') || authService.getCurrentUser()?.id == game.player1.id"
+                    (click)="$event.stopPropagation();" class="material-icons fs-5 text-danger pointer">delete</span>
             </h1>
             <h3 class="mb-0 text-muted float-end">
                 <span class="material-icons fs-5 align-text-bottom me-1">event</span>
