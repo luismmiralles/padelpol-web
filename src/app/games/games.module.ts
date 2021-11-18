@@ -9,10 +9,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
+import { GameComponent } from './components/games-page/game/game.component';
 
 @NgModule({
   declarations: [
-    GamesPageComponent
+    GamesPageComponent,
+    GameComponent
   ],
   imports: [
     CommonModule,

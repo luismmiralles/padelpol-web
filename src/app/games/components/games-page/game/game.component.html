@@ -1,0 +1,97 @@
+<mat-expansion-panel class="border rounded bg-white shadow" expanded>
+    <mat-expansion-panel-header class="py-3" collapsedHeight="auto" expandedHeight="auto">
+        <mat-panel-title class="justify-content-between">
+            <h1 class="mb-0">
+                <span class="material-icons fs-3 align-middle">location_on</span>
+                <span class="me-3">La Herrería Padel Club</span>
+                <span (click)="openCreateGameDialog();$event.stopPropagation();"
+                    class="material-icons fs-5 me-2 text-muted pointer">edit</span>
+                <span (click)="$event.stopPropagation();"
+                    class="material-icons fs-5 text-danger pointer">delete</span>
+            </h1>
+            <h3 class="mb-0 text-muted float-end">
+                <span class="material-icons fs-5 align-text-bottom me-1">event</span>
+                <span>07/09/2021 18:00 horas</span>
+            </h3>
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+        <div class="col-12">
+            <hr class="w-100 mt-0">
+        </div>
+    </div>
+    <div class="row justify-content-center py-2">
+        <div class="col-12 col-lg-10 col-xl-8">
+            <div class="border border-secondary rounded position-relative py-3 shadow"
+                style="background-color: #85b385;">
+                <div class="position-absolute h-100 border border-2 top-0" style="left: 12.5%;"></div>
+                <div class="position-absolute h-100 border border-2 top-0" style="right: 12.5%;"></div>
+                <div class="position-absolute w-75 border border-2 top-50 start-50 translate-middle"></div>
+                <div class="position-absolute h-100 top-0 start-50 border border-dark"></div>
+                <div
+                    class="position-absolute top-50 start-50 translate-middle fs-1 p-4 bg-white rounded-circle">
+                    VS
+                </div>
+                <div class="row py-3">
+                    <div class="col-6">
+                        <div (click)="openShowUserDialog()"
+                            class="d-inline-block position-relative pointer text-center mb-3"
+                            style="margin-left: 7%; z-index: 2;">
+                            <span
+                                class="material-icons rounded-circle p-2 text-dark border border-dark border-3 fs-1 mb-2">person</span>
+                            <div class="fs-6 text-dark fw-bold">Oliver</div>
+                        </div>
+                    </div>
+                    <div class="col-6 text-end">
+                        <div class="d-inline-block position-relative text-center pointer mb-3"
+                            style="margin-right: 7%; z-index: 2;">
+                            <span class="material-icons rounded-circle p-3 text-dark border-dark mb-2"
+                                style="border-style: dashed !important;">add</span>
+                            <div class="fs-6 text-dark">Libre3</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-inline-block position-relative text-center pointer mt-3"
+                            style="margin-left: 7%; z-index: 2;">
+                            <span class="material-icons rounded-circle p-3 text-dark border-dark mb-2"
+                                style="border-style: dashed !important;">add</span>
+                            <div class="fs-6 text-dark">Libre2</div>
+                        </div>
+                    </div>
+                    <div class="col-6 text-end">
+                        <div class="d-inline-block position-relative text-center pointer mt-3"
+                            style="margin-right: 7%; z-index: 2;">
+                            <span class="material-icons rounded-circle p-3 text-dark border-dark mb-2"
+                                style="border-style: dashed !important;">add</span>
+                            <div class="fs-6 text-dark">Libre4</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <hr class="w-100">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h3 class="mb-0 text-muted me-2">
+                <span class="material-icons fs-5 align-text-bottom me-1">sports_tennis</span>
+                <span>Nivel: Intermedio</span>
+
+            </h3>
+        </div>
+        <div class="col-12 col-md-6 text-md-end">
+            <h3 class="mb-0 text-muted me-2">
+                <span class="material-icons fs-5 align-text-bottom me-1">euro</span>
+                <span class="me-2">5€/persona</span>
+                <span>(</span>
+                <span class="material-icons fs-5 align-text-bottom me-1">schedule</span>
+                <span>90 minutos)</span>
+            </h3>
+
+        </div>
+    </div>
+</mat-expansion-panel>

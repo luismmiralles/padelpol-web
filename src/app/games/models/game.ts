@@ -5,10 +5,10 @@ export class Game {
 
     id?: number;
     location: string;
-    fecha: string;
+    date: string;
     courtPrice: number;
     duration: number;
-    paddleLeve: PaddleLevelApiResponse;
+    paddleLevel: PaddleLevelApiResponse;
     player1: User;
     player2?: User;
     player3?: User;

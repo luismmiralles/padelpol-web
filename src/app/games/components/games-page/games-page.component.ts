@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SweetalertService } from 'src/app/core/services/sweetalert.service';
+import { GamesApiService } from '../../services/games-api.service';
 
 @Component({
   selector: 'app-games-page',
@@ -8,9 +10,15 @@ import { Router } from '@angular/router';
 })
 export class GamesPageComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private gamesApiService: GamesApiService, private sweetAlertService: SweetalertService) { }
 
   ngOnInit(): void {
+    this.gamesApiService.getGames().subscribe({
+      next: res => {
+        console.log(res);
+      },
+      error: err => this.sweetAlertService.showAPIErrors(err)
+    });
   }
 
   openCreateGameDialog(): void {
@@ -18,11 +26,4 @@ export class GamesPageComponent implements OnInit {
     //   data: {}
     // });
   }
-
-  openShowUserDialog(): void {
-    // this.dialog.open(ShowUserDialogComponent, {
-    //   data: {}
-    // });
-  }
-
 }
