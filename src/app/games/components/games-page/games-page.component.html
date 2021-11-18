@@ -9,10 +9,10 @@
             </button>
         </div>
     </div>
-    <div class="row">
+    <div class="row" *ngFor="let game of games">
         <!-- PARTIDO 1 -->
         <div class="col-12 mb-3">
-            <app-game></app-game>
+            <app-game [game]="game"></app-game>
         </div>
     </div>
 </div>

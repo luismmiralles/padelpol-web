@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { config } from 'src/app/core/config';
 import { SessionStorageService } from 'src/app/core/services/session-storage.service';
-import { Game } from '../models/game';
 import { GameApiResponse } from '../models/interfaces/game-api-response';
+import { Game } from '../models/game';
 
 @Injectable({
   providedIn: 'root'

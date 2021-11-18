@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SweetalertService } from 'src/app/core/services/sweetalert.service';
+import { Game } from '../../models/game';
 import { GamesApiService } from '../../services/games-api.service';
 
 @Component({
@@ -10,12 +11,14 @@ import { GamesApiService } from '../../services/games-api.service';
 })
 export class GamesPageComponent implements OnInit {
 
+  games: Game[];
+
   constructor(public router: Router, private gamesApiService: GamesApiService, private sweetAlertService: SweetalertService) { }
 
   ngOnInit(): void {
     this.gamesApiService.getGames().subscribe({
       next: res => {
-        console.log(res);
+        this.games = res;
       },
       error: err => this.sweetAlertService.showAPIErrors(err)
     });
