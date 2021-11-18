@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { Game } from 'src/app/games/models/game';
 
 @Component({
@@ -10,7 +11,7 @@ export class GameComponent implements OnInit {
 
   @Input() game: Game;
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
   }
